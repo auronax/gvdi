@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/templates/modeloSistema.xhtml">
+
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
+
+	<ui:define name="conteudo">
+		<h:form id="frmcliente">
+			<p:dataTable id="tbcliente" emptyMessage="Dados não encontrados!"
+				value="#{MBPessoa.pessoas}" var="ver" paginator="true" rows="8">
+				<f:facet name="header">Lista de Clientes</f:facet>
+
+				<p:column headerText="Id" sortBy="#{ver.id_pessoa}"
+					filterBy="#{ver.id_pessoa}">
+					<h:outputText value="#{ver.id_pessoa}" />
+				</p:column>
+
+				<p:column headerText="Nome" sortBy="#{ver.nome}"
+					filterBy="#{ver.nome}">
+					<h:outputText value="#{ver.nome}" />
+				</p:column>
+
+				<p:column headerText="Email" sortBy="#{ver.email}"
+					filterBy="#{ver.email}">
+					<h:outputText value="#{ver.email}" />
+				</p:column>
+				
+				<p:column headerText="Opções" >
+					<p:commandButton icon="ui-icon-trash"/>
+				</p:column>
+				
+				<f:facet name="footer">
+					<p:commandButton value="Cadastrar"
+						actionListener="#{MBPessoa.prepararNovo}"
+						oncomplete="PF('dlgpesNovo').show();" update=":fmrclienteNovo:pncliente"/>
+				</f:facet>
+			</p:dataTable>
+		</h:form>
+
+		<p:dialog widgetVar="dlgpesNovo" closable="false" draggable="false"
+			resizable="false" header="Cadastrar cliente" modal="true"
+			appendTo="@(body)">
+			<h:form id="fmrclienteNovo">
+				<h:panelGrid id="pncliente" columns="2">
+					<p:outputLabel value="Nome" />
+					<h:inputText size="30" maxlength="45"
+						value="#{MBPessoa.pessoa.nome}" />
+					<p:outputLabel value="Email" />
+					<h:inputText size="30" maxlength="45"
+						value="#{MBPessoa.pessoa.email}" />
+					<p:outputLabel value="Senha" />
+					<h:inputText size="30" maxlength="8"
+						value="#{MBPessoa.pessoa.senha}" />
+				</h:panelGrid>
+				<h:panelGrid columns="2">
+					<p:commandButton value="Salvar" actionListener="#{MBPessoa.novo}"
+						oncomplete="PF('dlgpesNovo').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+					<p:commandButton value="Cancelar"
+						onclick="PF('dlgpesNovo').hide();" />
+				</h:panelGrid>
+			</h:form>
+		</p:dialog>
+
+<p:dialog widgetVar="dlgpesExcluir closable="false" draggable="false"
+			resizable="false" header="Cadastrar cliente" modal="true"
+			appendTo="@(body)">
+
+<h:form id=frmpesExcluir>
+<h:panelGrid id="pnpesExcluir">
+<h:outputText value="Nome"/>
+<h:outputText value="#{MBPessoa.pessoa.nome}"/>
+</h:panelGrid>	
+
+<h:panelGrid column="2">
+<p:commandButton value="Excluir" actionListener="#{MBPessoa.novo}" oncomplete="PF('dlgpesExcluir').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+<p:commandButton value="Cancelar" onclick="PF('dlgpesNovo').hide();" />
+</h:panelGrid>
+</h:form>
+
+</p:dialog>
+
+	</ui:define>
+
+</ui:composition>
