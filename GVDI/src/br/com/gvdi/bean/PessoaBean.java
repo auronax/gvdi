@@ -73,5 +73,27 @@ public class PessoaBean {
 		}
 	}
 	
+	public void prepararExcluir(){
+		pessoa = pessoas.getRowData();
+	}
+	
+	
+	public void Excluir(){
+		try {
+			PessoaDAO pdao = new PessoaDAO();
+			pdao.excluir(pessoa);
+			
+			ArrayList<Pessoa>lista = pdao.listar();
+			pessoas = new ListDataModel<Pessoa>(lista);
+			
+			JSFUtil.adicionarMensagemSucesso("Excluido");
+			
+		} catch (SQLException e) {
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
+	}
+	
+	
 	
 }
