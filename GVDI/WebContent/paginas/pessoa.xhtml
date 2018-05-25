@@ -35,7 +35,10 @@
 				<p:column headerText="Opções" >
 					<p:commandButton icon="ui-icon-trash" 
 						actionListener="#{MBPessoa.prepararExcluir}"
-						oncomplete="PF('dlgpesExcluir').show();" update=":fmrclienteexcluir:pnpesExcluir"/>
+						oncomplete="PF('dlgpesExcluir').show();" update=":fmrclienteNovo:pncliente"/>
+						<p:commandButton icon="ui-icon-pencil" 
+						actionListener="#{MBPessoa.prepararAlterar}"
+						oncomplete="PF('dlgpesAlterar').show();" update=":fmrclienteNovo:pncliente"/>
 				</p:column>
 				
 				<f:facet name="footer">
@@ -71,7 +74,7 @@
 		</p:dialog>
 
 <p:dialog widgetVar="dlgpesExcluir" closable="false" draggable="false"
-			resizable="false" header="Cadastrar cliente" modal="true"
+			resizable="false" header="Excluir cliente" modal="true"
 			appendTo="@(body)">
 
 <h:form id="frmpesExcluir">
@@ -81,8 +84,26 @@
 </h:panelGrid>	
 
 <h:panelGrid column="2">
-<p:commandButton value="Excluir" actionListener="#{MBPessoa.prepararExcluir}" oncomplete="PF('dlgpesExcluir').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+<p:commandButton value="Excluir" actionListener="#{MBPessoa.excluir}" oncomplete="PF('dlgpesExcluir').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
 <p:commandButton value="Cancelar" onclick="PF('dlgpesExcluir').hide();" />
+</h:panelGrid>
+</h:form>
+
+</p:dialog>
+
+<p:dialog widgetVar="dlgpesAlterar" closable="false" draggable="false"
+			resizable="false" header="Alterar cliente" modal="true"
+			appendTo="@(body)">
+
+<h:form id="frmpesAlterar">
+<h:panelGrid id="pnpesAlterar" columns="2">
+<h:outputText value="Nome"/>
+<h:inputText value="#{MBPessoa.pessoa.nome}"/>
+</h:panelGrid>	
+
+<h:panelGrid column="2">
+<p:commandButton value="Alterar" actionListener="#{MBPessoa.alterar}" oncomplete="PF('dlgpesAlterar').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+<p:commandButton value="Cancelar" onclick="PF('dlgpesAlterar').hide();" />
 </h:panelGrid>
 </h:form>
 

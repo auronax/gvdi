@@ -77,8 +77,7 @@ public class PessoaBean {
 		pessoa = pessoas.getRowData();
 	}
 	
-	
-	public void Excluir(){
+	public void excluir(){
 		try {
 			PessoaDAO pdao = new PessoaDAO();
 			pdao.excluir(pessoa);
@@ -93,7 +92,25 @@ public class PessoaBean {
 			e.printStackTrace();
 		}
 	}
+
+	public void prepararAlterar(){
+		pessoa = pessoas.getRowData();
+	}	
 	
-	
+	public void alterar(){
+		try {
+			PessoaDAO pdao = new PessoaDAO();
+			pdao.alterar(pessoa);
+			
+			ArrayList<Pessoa>lista = pdao.listar();
+			pessoas = new ListDataModel<Pessoa>(lista);
+			
+			JSFUtil.adicionarMensagemSucesso("Alterado");
+			
+		} catch (SQLException e) {
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
+	}
 	
 }

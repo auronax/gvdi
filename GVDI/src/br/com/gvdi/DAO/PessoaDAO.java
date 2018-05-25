@@ -24,6 +24,7 @@ public class PessoaDAO {
 		comando.execute();
 	}
 
+
 	public void excluir(Pessoa p) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
@@ -38,7 +39,7 @@ public class PessoaDAO {
 		comando.execute();
 	}
 
-	public void editar(Pessoa p) throws SQLException {
+	public void alterar(Pessoa p) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
 
@@ -137,38 +138,48 @@ public class PessoaDAO {
 	}
 	
 	public static void main(String[] args) {
-		
-		  Pessoa p1 = new Pessoa(); p1.setNome("Elison");
-		 p1.setEmail("elison.br@gmail.com"); p1.setSenha("naotemsenha"); PessoaDAO pdao =
-		 new PessoaDAO();
+		/*
+		  Pessoa p1 = new Pessoa(); 
+		  p1.setNome("Elison");
+		  p1.setEmail("elison.br@gmail.com"); 
+		  p1.setSenha("naotemsenha"); 
+		  PessoaDAO pdao = new PessoaDAO();
 		 
 		 try { pdao.salvar(p1); System.out.println("Salvo!"); } catch
 		 (SQLException e) { System.out.println("Erro"); e.printStackTrace(); }
+		 */
+
+		/*
+		  Pessoa p1 = new Pessoa(); 
+		  	p1.setId_pessoa(4);
+		  
+		  PessoaDAO pdao = new PessoaDAO();
+		  
+		  try { pdao.excluir(p1); 
+		  	System.out.println("Apagado!");
+		  
+		  } catch (SQLException e) { 
+			System.out.println("Erro");
+			e.printStackTrace(); }
 		 
-
+*/
 		/*
-		 * Pessoa p1 = new Pessoa(); p1.setId_pessoa(1);
-		 * 
-		 * PessoaDAO pdao = new PessoaDAO();
-		 * 
-		 * try { pdao.excluir(p1); System.out.println("Apagado!");
-		 * 
-		 * } catch (SQLException e) { System.out.println("Erro");
-		 * e.printStackTrace(); }
+		 Pessoa p1 = new Pessoa(); 
+		 p1.setId_pessoa(1); 
+		 p1.setNome("Elison Martins de Souza");
+		  
+		  PessoaDAO pdao = new PessoaDAO();
+		  
+		  try { pdao.editar(p1); 
+		  System.out.println("Alterado!");
+		  
+		  } catch (SQLException e) { 
+			  System.out.println("Erro");
+		  e.printStackTrace(); }
 		 */
-
 		/*
-		 * Pessoa p1 = new Pessoa(); p1.setId_pessoa(1); p1.setNome("Jureg");
-		 * 
-		 * PessoaDAO pdao = new PessoaDAO();
-		 * 
-		 * try { pdao.editar(p1); System.out.println("Alterado!");
-		 * 
-		 * } catch (SQLException e) { System.out.println("Erro");
-		 * e.printStackTrace(); }
-		 */
-		/*Pessoa p1 = new Pessoa();
-		p1.setId_pessoa(2);
+		Pessoa p1 = new Pessoa();
+		p1.setId_pessoa(1);
 
 		Pessoa p2 = new Pessoa();
 		p2.setId_pessoa(3);
@@ -184,9 +195,10 @@ public class PessoaDAO {
 		} catch (SQLException e) {
 			System.out.println("Erro");
 			e.printStackTrace();
-		}*/
-		/*
-		PessoaDAO pdao = new PessoaDAO();
+		}
+		*/
+		
+		/*PessoaDAO pdao = new PessoaDAO();
 
 		try {
 			ArrayList<Pessoa> lista = pdao.listar();
@@ -197,8 +209,8 @@ public class PessoaDAO {
 		} catch (SQLException e) {
 			System.out.println("Erro");
 			e.printStackTrace();
-		}
-		*/
+		}*/
+		
 		/*
 		Pessoa p1 = new Pessoa();
 		p1.setNome("Eli");
