@@ -3,7 +3,7 @@ package br.com.gvdi.DAO;
 import java.sql.*;
 import br.com.gvdi.conexao.ConexaoBd;
 import br.com.gvdi.domain.Produto;
-
+//teste
 public class ProdutoDAO {
 	public void salvar(Produto p) throws SQLException{
 		StringBuilder sql = new StringBuilder();
