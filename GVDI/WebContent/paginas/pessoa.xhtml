@@ -13,8 +13,8 @@
 
 	<ui:define name="conteudo">
 		<h:form id="frmcliente">
-			<p:dataTable id="tbcliente" emptyMessage="Dados não encontrados!"
-				value="#{MBPessoa.pessoas}" var="ver" paginator="true" rows="8">
+			<p:dataTable id="tbcliente" widgetVar="tabelaCliente" emptyMessage="Dados não encontrados!"
+				value="#{MBPessoa.pessoas}" var="ver" filteredValue="#{MBPessoa.pessoasFiltradas}" paginator="true" rows="8">
 				<f:facet name="header">Lista de Clientes</f:facet>
 
 				<p:column headerText="Id" sortBy="#{ver.id_pessoa}"
@@ -33,12 +33,13 @@
 				</p:column>
 				
 				<p:column headerText="Opções" >
-					<p:commandButton icon="ui-icon-trash" 
-						actionListener="#{MBPessoa.prepararExcluir}"
-						oncomplete="PF('dlgpesExcluir').show();" update=":fmrclienteNovo:pncliente"/>
-						<p:commandButton icon="ui-icon-pencil" 
-						actionListener="#{MBPessoa.prepararAlterar}"
-						oncomplete="PF('dlgpesAlterar').show();" update=":fmrclienteNovo:pncliente"/>
+					<p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgpesExcluir').show();" update=":frmpesExcluir:pnpesExcluir" >
+						<f:setPropertyActionListener value="#{ver}" target="#{MBPessoa.pessoa}"/>
+					</p:commandButton>
+					
+					<p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgpesAlterar').show();" update=":frmpesAlterar:pnpesAlterar">
+					<f:setPropertyActionListener value="#{ver}" target="#{MBPessoa.pessoa}"/>
+					</p:commandButton>
 				</p:column>
 				
 				<f:facet name="footer">
@@ -66,7 +67,7 @@
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Salvar" actionListener="#{MBPessoa.novo}"
-						oncomplete="PF('dlgpesNovo').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+						oncomplete="PF('dlgpesNovo').hide(); PF('tabelaCliente').clearFilters();" update=":frmcliente:tbcliente :msgGlobal"/>
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgpesNovo').hide();" />
 				</h:panelGrid>
@@ -79,12 +80,12 @@
 
 <h:form id="frmpesExcluir">
 <h:panelGrid id="pnpesExcluir" columns="2">
-<h:outputText value="Nome"/>
+<h:outputText value="Nome: "/>
 <h:outputText value="#{MBPessoa.pessoa.nome}"/>
 </h:panelGrid>	
 
-<h:panelGrid column="2">
-<p:commandButton value="Excluir" actionListener="#{MBPessoa.excluir}" oncomplete="PF('dlgpesExcluir').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+<h:panelGrid columns="2">
+<p:commandButton value="Excluir" actionListener="#{MBPessoa.excluir}" oncomplete="PF('dlgpesExcluir').hide(); PF('tabelaCliente').clearFilters();" update=":frmcliente:tbcliente :msgGlobal"/>
 <p:commandButton value="Cancelar" onclick="PF('dlgpesExcluir').hide();" />
 </h:panelGrid>
 </h:form>
@@ -97,12 +98,13 @@
 
 <h:form id="frmpesAlterar">
 <h:panelGrid id="pnpesAlterar" columns="2">
-<h:outputText value="Nome"/>
-<h:inputText value="#{MBPessoa.pessoa.nome}"/>
+<h:outputText value="ID: "/><h:outputText value="#{MBPessoa.pessoa.id_pessoa}"/>
+<h:outputText value="Nome: "/><h:inputText value="#{MBPessoa.pessoa.nome}"/>
+<h:outputText value="Email: "/><h:inputText value="#{MBPessoa.pessoa.email}"/>
 </h:panelGrid>	
 
-<h:panelGrid column="2">
-<p:commandButton value="Alterar" actionListener="#{MBPessoa.alterar}" oncomplete="PF('dlgpesAlterar').hide();" update=":frmcliente:tbcliente :msgGlobal"/>
+<h:panelGrid columns="2">
+<p:commandButton value="Alterar" actionListener="#{MBPessoa.alterar}" oncomplete="PF('dlgpesAlterar').hide(); PF('tabelaCliente').clearFilters();" update=":frmcliente:tbcliente :msgGlobal"/>
 <p:commandButton value="Cancelar" onclick="PF('dlgpesAlterar').hide();" />
 </h:panelGrid>
 </h:form>

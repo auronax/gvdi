@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
-import javax.faces.model.ListDataModel;
 
 import br.com.gvdi.DAO.PessoaDAO;
 import br.com.gvdi.domain.Pessoa;
@@ -15,8 +14,12 @@ import br.com.gvdi.util.JSFUtil;
 @ManagedBean(name = "MBPessoa")
 @ViewScoped
 public class PessoaBean {
+	
 	private Pessoa pessoa;
-			
+	private ArrayList<Pessoa>pessoas;
+	private ArrayList<Pessoa>pessoasFiltradas;
+	
+	
 	public Pessoa getPessoa() {
 		return pessoa;
 	}
@@ -24,27 +27,30 @@ public class PessoaBean {
 	public void setPessoa(Pessoa pessoa) {
 		this.pessoa = pessoa;
 	}
-
 	
-	
-	private ListDataModel<Pessoa> pessoas;
-	
-	public ListDataModel<Pessoa> getPessoas() {
+	public ArrayList<Pessoa> getPessoas() {
 		return pessoas;
 	}
-
-	public void setPessoas(ListDataModel<Pessoa> pessoas) {
+	
+	public void setPessoas(ArrayList<Pessoa> pessoas) {
 		this.pessoas = pessoas;
+	}
+	
+	public ArrayList<Pessoa> getPessoasFiltradas() {
+		return pessoasFiltradas;
+	}
+	
+	public void setPessoasFiltradas(ArrayList<Pessoa> pessoasFiltradas) {
+		this.pessoasFiltradas = pessoasFiltradas;
 	}
 
 	@PostConstruct
 	public void prepararPesquisa(){
-		
-		
+				
 		try {
 			PessoaDAO pdao = new PessoaDAO();
-			ArrayList<Pessoa>lista = pdao.listar();
-			pessoas = new ListDataModel<Pessoa>(lista);
+			pessoas = pdao.listar();
+			
 		} catch (SQLException e) {
 			JSFUtil.adicionarMensagemErro("ex.getMessage()");
 			e.printStackTrace();
@@ -62,9 +68,8 @@ public class PessoaBean {
 			PessoaDAO pdao = new PessoaDAO();
 			pdao.salvar(pessoa);
 			
-			ArrayList<Pessoa>lista = pdao.listar();
-			pessoas = new ListDataModel<Pessoa>(lista);
-			
+			pessoas = pdao.listar();
+						
 			JSFUtil.adicionarMensagemSucesso("Dados salvos");
 			
 		} catch (SQLException e) {
@@ -73,17 +78,14 @@ public class PessoaBean {
 		}
 	}
 	
-	public void prepararExcluir(){
-		pessoa = pessoas.getRowData();
-	}
+
 	
 	public void excluir(){
 		try {
 			PessoaDAO pdao = new PessoaDAO();
 			pdao.excluir(pessoa);
 			
-			ArrayList<Pessoa>lista = pdao.listar();
-			pessoas = new ListDataModel<Pessoa>(lista);
+			pessoas = pdao.listar();
 			
 			JSFUtil.adicionarMensagemSucesso("Excluido");
 			
@@ -93,17 +95,14 @@ public class PessoaBean {
 		}
 	}
 
-	public void prepararAlterar(){
-		pessoa = pessoas.getRowData();
-	}	
+
 	
 	public void alterar(){
 		try {
 			PessoaDAO pdao = new PessoaDAO();
 			pdao.alterar(pessoa);
 			
-			ArrayList<Pessoa>lista = pdao.listar();
-			pessoas = new ListDataModel<Pessoa>(lista);
+			pessoas = pdao.listar();
 			
 			JSFUtil.adicionarMensagemSucesso("Alterado");
 			
@@ -112,6 +111,5 @@ public class PessoaBean {
 			e.printStackTrace();
 		}
 	}
-	//teste
 	
 }
