@@ -16,8 +16,8 @@ public class ProdutoDAOTeste {
 	@Ignore
 	public void salvar() throws SQLException{
 	  Produto p1 = new Produto(); 
-	  p1.setDesc_prod("Perfume Dynamique 100ml");
-	  p1.setQuantidade("15"); 
+	  p1.setDesc_prod("Perfume Vraie 100ml");
+	  p1.setQuantidade("20"); 
 	  p1.setPreco_custo("49.99");
 	  p1.setPreco_venda("99.90");
 	  
@@ -60,5 +60,19 @@ public class ProdutoDAOTeste {
 	
 	}
 	
+	@Test
+	//@Ignore
+	public void alterar() throws SQLException{
+		Produto p = new Produto();
+		p.setId_prod(3L);
+		p.setDesc_prod("Creme hidratante Adlux 100ml");
+		p.setQuantidade("10");
+		p.setPreco_custo("24.99");
+		p.setPreco_venda("49.90");
+		
+		ProdutoDAO pdao = new ProdutoDAO();
+		pdao.alterar(p);
+		
+	}
 	
 }

@@ -14,7 +14,6 @@ import br.com.gvdi.util.JSFUtil;
 @ManagedBean(name = "MBPessoa")
 @ViewScoped
 public class PessoaBean {
-	
 	private Pessoa pessoa;
 	private ArrayList<Pessoa>pessoas;
 	private ArrayList<Pessoa>pessoasFiltradas;

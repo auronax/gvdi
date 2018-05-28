@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import br.com.gvdi.conexao.ConexaoBd;
-import br.com.gvdi.domain.Pessoa;
 import br.com.gvdi.domain.Produto;
 
 public class ProdutoDAO {
@@ -15,8 +14,8 @@ public class ProdutoDAO {
 		sql.append("VALUES (?,?,?,?) ");
 
 		Connection conexao = ConexaoBd.conectar();
-
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
+
 		comando.setString(1, p.getDesc_prod());
 		comando.setString(2, p.getQuantidade());
 		comando.setString(3, p.getPreco_custo());
@@ -28,7 +27,7 @@ public class ProdutoDAO {
 
 		StringBuilder sql = new StringBuilder();
 
-		sql.append("SELECT id_prod, desc_prod, preco_venda ");
+		sql.append("SELECT id_prod,desc_prod,preco_venda ");
 		sql.append("FROM produto ");
 		sql.append("ORDER BY id_prod ASC");
 
@@ -63,4 +62,24 @@ public class ProdutoDAO {
 		comando.setLong(1, p.getId_prod());
 		comando.execute();
 	}
+	
+	public void alterar(Produto p) throws SQLException {
+
+		StringBuilder sql = new StringBuilder();
+
+		sql.append("UPDATE produto ");
+		sql.append("SET desc_prod = ? ,quantidade = ? ,preco_custo = ? ,preco_venda = ? ");
+		sql.append("WHERE id_prod = ?");
+
+		Connection conexao = ConexaoBd.conectar();
+		PreparedStatement comando = conexao.prepareStatement(sql.toString());
+
+		comando.setString(1, p.getDesc_prod());
+		comando.setString(2, p.getQuantidade());
+		comando.setString(3, p.getPreco_custo());
+		comando.setString(4, p.getPreco_venda());
+		comando.setLong(5, p.getId_prod());
+		comando.execute();
+	}
+	
 }

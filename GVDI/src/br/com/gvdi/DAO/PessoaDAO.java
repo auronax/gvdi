@@ -7,10 +7,8 @@ import br.com.gvdi.conexao.ConexaoBd;
 import br.com.gvdi.domain.Pessoa;
 
 public class PessoaDAO {
-	public void salvar(Pessoa p) throws SQLException {
-
+	public void salvar(Pessoa pessoa) throws SQLException {
 		StringBuilder sql = new StringBuilder();
-
 		sql.append("INSERT INTO pessoa ");
 		sql.append("(nome,email,senha) ");
 		sql.append("VALUES (?,?,?) ");
@@ -18,9 +16,9 @@ public class PessoaDAO {
 		Connection conexao = ConexaoBd.conectar();
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
 
-		comando.setString(1, p.getNome());
-		comando.setString(2, p.getEmail());
-		comando.setString(3, p.getSenha());
+		comando.setString(1, pessoa.getNome());
+		comando.setString(2, pessoa.getEmail());
+		comando.setString(3, pessoa.getSenha());
 		comando.execute();
 	}
 

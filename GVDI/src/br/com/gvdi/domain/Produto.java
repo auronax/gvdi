@@ -6,6 +6,7 @@ public class Produto {
 	private String quantidade;
 	private String preco_custo;
 	private String preco_venda;
+	
 	public Long getId_prod() {
 		return id_prod;
 	}
@@ -36,8 +37,5 @@ public class Produto {
 	public void setPreco_venda(String preco_venda) {
 		this.preco_venda = preco_venda;
 	}
-
-
-
 
 }
