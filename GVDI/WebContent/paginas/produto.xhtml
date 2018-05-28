@@ -47,7 +47,9 @@
 				</p:column>
 				
 				<f:facet name="footer">
-					<p:commandButton value="Cadastrar"/>
+					<p:commandButton value="Cadastrar" 
+					actionListener="#{MBProduto.prepararNovo}" 
+					oncomplete="PF('dlgprodNovo').show;" update=":frmprodNovo:pnprodNovo :msgGlobal"/>
 				</f:facet>
 			</p:dataTable>
 		</h:form>
@@ -55,19 +57,19 @@
 		<p:dialog widgetVar="dlgprodNovo" closable="false" draggable="false"
 			resizable="false" header="Cadastrar produto" modal="true"
 			appendTo="@(body)">
-			<h:form id="fmrprodNovo">
-				<h:panelGrid id="pnprodNovo" columns="2">
+			<h:form id="frmprodNovo">
+				<h:panelGrid id="pnprodNovo" columns="6">
 					<p:outputLabel value="Descrição" />
 					<h:inputText size="30" maxlength="45"
 						value="#{MBProduto.produto.desc_prod}" />
 					<p:outputLabel value="Quantidade" />
-					<h:inputText size="30" maxlength="45"
+					<h:inputText size="15" maxlength="45"
 						value="#{MBProduto.produto.quantidade}" />
 					<p:outputLabel value="Preço de custo" />
-					<h:inputText size="30" maxlength="8"
+					<h:inputText size="15" maxlength="8"
 						value="#{MBProduto.produto.preco_custo}" />
 						<p:outputLabel value="Preço de venda" />
-					<h:inputText size="30" maxlength="8"
+					<h:inputText size="15" maxlength="8"
 						value="#{MBProduto.produto.preco_venda}" />
 				</h:panelGrid>
 				<h:panelGrid columns="2">

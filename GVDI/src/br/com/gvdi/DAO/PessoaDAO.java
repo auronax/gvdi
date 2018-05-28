@@ -22,7 +22,6 @@ public class PessoaDAO {
 		comando.execute();
 	}
 
-
 	public void excluir(Pessoa p) throws SQLException {
 
 		StringBuilder sql = new StringBuilder();
@@ -135,8 +134,9 @@ public class PessoaDAO {
 		return lista;
 	}
 	
+	/*
 	public static void main(String[] args) {
-		/*
+		
 		  Pessoa p1 = new Pessoa(); 
 		  p1.setNome("Elison");
 		  p1.setEmail("elison.br@gmail.com"); 
@@ -224,7 +224,7 @@ public class PessoaDAO {
 		} catch (SQLException e) {
 			System.out.println("Erro");
 			e.printStackTrace();
-		}*/
-	}
+		}
+	}*/
 	
 }

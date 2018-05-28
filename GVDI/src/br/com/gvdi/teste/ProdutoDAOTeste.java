@@ -32,7 +32,7 @@ public class ProdutoDAOTeste {
 	}
 	
 	@Test
-	@Ignore
+	//@Ignore
 	public void listar() throws SQLException{
 		ProdutoDAO pdao = new ProdutoDAO();
 		ArrayList<Produto> lista = pdao.listar();
@@ -61,7 +61,7 @@ public class ProdutoDAOTeste {
 	}
 	
 	@Test
-	//@Ignore
+	@Ignore
 	public void alterar() throws SQLException{
 		Produto p = new Produto();
 		p.setId_prod(3L);

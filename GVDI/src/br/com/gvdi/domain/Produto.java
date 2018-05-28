@@ -7,6 +7,7 @@ public class Produto {
 	private String preco_custo;
 	private String preco_venda;
 	
+
 	public Long getId_prod() {
 		return id_prod;
 	}

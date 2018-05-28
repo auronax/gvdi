@@ -10,7 +10,7 @@ import javax.faces.bean.ViewScoped;
 import br.com.gvdi.DAO.ProdutoDAO;
 import br.com.gvdi.domain.Produto;
 import br.com.gvdi.util.JSFUtil;
-
+/*
 @ManagedBean(name = "MBProduto")
 @ViewScoped
 public class ProdutoBean {
@@ -64,5 +64,11 @@ public class ProdutoBean {
 			e.printStackTrace();
 		}
 	}
+	
+	public void prepararNovo(){
+		produto = new Produto();		
+	}
+	
+	
 
-}
+}*/

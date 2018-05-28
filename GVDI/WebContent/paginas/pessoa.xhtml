@@ -45,7 +45,7 @@
 				<f:facet name="footer">
 					<p:commandButton value="Cadastrar"
 						actionListener="#{MBPessoa.prepararNovo}"
-						oncomplete="PF('dlgpesNovo').show();" update=":fmrclienteNovo:pncliente"/>
+						oncomplete="PF('dlgpesNovo').show();" update=":frmclienteNovo:pncliente :msgGlobal"/>
 				</f:facet>
 			</p:dataTable>
 		</h:form>
@@ -53,7 +53,7 @@
 		<p:dialog widgetVar="dlgpesNovo" closable="false" draggable="false"
 			resizable="false" header="Cadastrar cliente" modal="true"
 			appendTo="@(body)">
-			<h:form id="fmrclienteNovo">
+			<h:form id="frmclienteNovo">
 				<h:panelGrid id="pncliente" columns="2">
 					<p:outputLabel value="Nome" />
 					<h:inputText size="30" maxlength="45"
