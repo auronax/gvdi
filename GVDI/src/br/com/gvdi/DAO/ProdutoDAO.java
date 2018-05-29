@@ -61,7 +61,7 @@ public class ProdutoDAO {
 
 		StringBuilder sql = new StringBuilder();
 
-		sql.append("SELECT id_prod,desc_prod,quantidade, preco_custo,preco_venda ");
+		sql.append("SELECT id_prod, desc_prod, quantidade, preco_custo, preco_venda ");
 		sql.append("FROM produto ");
 		sql.append("WHERE id_prod = ? ");
 
@@ -89,7 +89,7 @@ public class ProdutoDAO {
 		
 		StringBuilder sql = new StringBuilder();
 
-		sql.append("SELECT id_prod,desc_prod,quantidade,preco_custo,preco_venda ");
+		sql.append("SELECT id_prod, desc_prod, quantidade, preco_custo, preco_venda ");
 		sql.append("FROM produto ");
 		sql.append("WHERE desc_prod LIKE ? ");
 		sql.append("ORDER BY id_prod ASC ");
@@ -117,7 +117,7 @@ public class ProdutoDAO {
 
 		StringBuilder sql = new StringBuilder();
 
-		sql.append("SELECT id_prod,desc_prod,preco_venda ");
+		sql.append("SELECT id_prod, desc_prod,quantidade, preco_custo, preco_venda ");
 		sql.append("FROM produto ");
 		sql.append("ORDER BY id_prod ASC");
 
@@ -132,6 +132,8 @@ public class ProdutoDAO {
 			Produto p = new Produto();
 			p.setId_prod(resultado.getLong("id_prod"));
 			p.setDesc_prod(resultado.getString("desc_prod"));
+			p.setQuantidade(resultado.getString("quantidade"));
+			p.setPreco_custo(resultado.getString("preco_custo"));
 			p.setPreco_venda(resultado.getString("preco_venda"));
 			
 			lista.add(p);

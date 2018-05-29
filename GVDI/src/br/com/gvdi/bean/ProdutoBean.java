@@ -10,65 +10,96 @@ import javax.faces.bean.ViewScoped;
 import br.com.gvdi.DAO.ProdutoDAO;
 import br.com.gvdi.domain.Produto;
 import br.com.gvdi.util.JSFUtil;
-/*
+
 @ManagedBean(name = "MBProduto")
 @ViewScoped
 public class ProdutoBean {
 	private Produto produto;
-	private ArrayList<Produto> itens;
-	private ArrayList<Produto> itensFiltrados;
+	private ArrayList<Produto>produtos;
+	private ArrayList<Produto>produtosFiltrados;
 	
-	private ArrayList<Produto>comboProduto;
 	
-	public ArrayList<Produto> getComboProduto() {
-		return comboProduto;
-	}
-	
-	public void setComboProduto(ArrayList<Produto> comboProduto) {
-		this.comboProduto = comboProduto;
-	}
-
 	public Produto getProduto() {
 		return produto;
 	}
-
 	public void setProduto(Produto produto) {
 		this.produto = produto;
 	}
-
-	public ArrayList<Produto> getItens() {
-		return itens;
+	public ArrayList<Produto> getProdutos() {
+		return produtos;
 	}
-
-	public void setItens(ArrayList<Produto> itens) {
-		this.itens = itens;
+	public void setProdutos(ArrayList<Produto> produtos) {
+		this.produtos = produtos;
 	}
-
-	public ArrayList<Produto> getItensFiltrados() {
-		return itensFiltrados;
+	public ArrayList<Produto> getProdutosFiltrados() {
+		return produtosFiltrados;
 	}
-
-	public void setItensFiltrados(ArrayList<Produto> itensFiltrados) {
-		this.itensFiltrados = itensFiltrados;
+	public void setProdutosFiltrados(ArrayList<Produto> produtosFiltrados) {
+		this.produtosFiltrados = produtosFiltrados;
 	}
 
 	@PostConstruct
-	public void prepararPesquisa() {
-
+	public void prepararPesquisa(){
+				
 		try {
-			ProdutoDAO pdao = new ProdutoDAO();
-			itens = pdao.listar();
-
+			ProdutoDAO dao = new ProdutoDAO();
+			produtos = dao.listar();
+			
+		} catch (SQLException e) {
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void prepararNovo(){
+		produto = new Produto();
+	}
+	
+	public void novo(){
+		
+		try {
+			ProdutoDAO dao = new ProdutoDAO();
+			dao.salvar(produto);
+			
+			produtos = dao.listar();
+						
+			JSFUtil.adicionarMensagemSucesso("Dados salvos");
+			
+		} catch (SQLException e) {
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
+	}
+		
+	public void excluir(){
+		try {
+			ProdutoDAO dao = new ProdutoDAO();
+			dao.excluir(produto);
+			
+			produtos = dao.listar();
+			
+			JSFUtil.adicionarMensagemSucesso("Excluido");
+			
 		} catch (SQLException e) {
 			JSFUtil.adicionarMensagemErro("ex.getMessage()");
 			e.printStackTrace();
 		}
 	}
 	
-	public void prepararNovo(){
-		produto = new Produto();		
+	public void alterar(){
+		try {
+			ProdutoDAO dao = new ProdutoDAO();
+			dao.alterar(produto);
+			
+			produtos = dao.listar();
+			
+			JSFUtil.adicionarMensagemSucesso("Alterado");
+			
+		} catch (SQLException e) {
+			JSFUtil.adicionarMensagemErro("ex.getMessage()");
+			e.printStackTrace();
+		}
 	}
 	
-	
-
-}*/
+}

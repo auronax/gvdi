@@ -41,14 +41,16 @@ public class PessoaDAO {
 		StringBuilder sql = new StringBuilder();
 
 		sql.append("UPDATE pessoa ");
-		sql.append("SET nome = ? ");
+		sql.append("SET nome = ? , email = ? ");
 		sql.append("WHERE id_pessoa = ? ");
 
 		Connection conexao = ConexaoBd.conectar();
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
 
 		comando.setString(1, p.getNome());
+		
 		comando.setLong(2, p.getId_pessoa());
+		
 		comando.execute();
 	}
 
