@@ -67,7 +67,7 @@
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Salvar" actionListener="#{MBPessoa.novo}"
-						oncomplete="verificar(xhr, status, args, 'dlgpesNovo', 'tbcliente');" update=":frmcliente:tbcliente :msgGlobal"/>
+						oncomplete="PF('dlgpesNovo').hide(); PF('tabelaCliente').clearFilters();" update=":frmcliente:tbcliente :msgGlobal"/>
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgpesNovo').hide();" />
 				</h:panelGrid>

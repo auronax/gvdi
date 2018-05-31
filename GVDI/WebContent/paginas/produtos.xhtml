@@ -65,9 +65,9 @@
 			appendTo="@(body)">
 			<h:form id="frmprodNovo">
 				<h:panelGrid id="pnprodNovo" columns="2">
-					<p:outputLabel value="Descrição" for="txtedtprod"/>
+					<p:outputLabel value="Descrição" />
 					<h:inputText size="30" maxlength="45"
-						value="#{MBProduto.produto.desc_prod}" required="true" id="txtedtprod" requiredMessage="campo descrição obrigatório" />
+						value="#{MBProduto.produto.desc_prod}" required="true" requiredMessage="campo descrição obrigatório" />
 					<p:outputLabel value="Quantidade"/>
 					<h:inputText size="30" maxlength="45"
 						value="#{MBProduto.produto.quantidade}" required="true" requiredMessage="campo quantidade obrigatório"  />
@@ -80,7 +80,7 @@
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Salvar" actionListener="#{MBProduto.novo}" 
-						oncomplete="verificar(xhr, status, args, 'dlgprodNovo', 'tbProduto');" update=":frmProduto:tbProduto :msgGlobal"/>
+						oncomplete="PF('dlgprodNovo').hide(); PF('tabelaProduto').clearFilters(); " update=":frmProduto:tbProduto :msgGlobal"/>
 
 					<p:commandButton value="Cancelar"
 						onclick="PF('dlgprodNovo').hide();" />
@@ -99,7 +99,7 @@
 </h:panelGrid>	
 
 <h:panelGrid columns="2">
-<p:commandButton value="Excluir" actionListener="#{MBProduto.excluir}" oncomplete="verificar(xhr, status, args, 'dlgprodExcluir', 'tbProduto');" update=":frmProduto:tbProduto :msgGlobal"/>
+<p:commandButton value="Excluir" actionListener="#{MBProduto.excluir}" oncomplete="PF('dlgprodExcluir').hide(); PF('tabelaProduto').clearFilters(); " update=":frmProduto:tbProduto :msgGlobal"/>
 <p:commandButton value="Cancelar" onclick="PF('dlgprodExcluir').hide();" />
 </h:panelGrid>
 </h:form>
@@ -120,7 +120,7 @@
 </h:panelGrid>	
 
 <h:panelGrid columns="2">
-<p:commandButton value="Alterar" actionListener="#{MBProduto.alterar}" oncomplete="verificar(xhr, status, args, 'dlgprodAlterar', 'tbProduto');" update=":frmProduto:tbProduto :msgGlobal"/>
+<p:commandButton value="Alterar" oncomplete="PF('dlgprodAlterar').hide(); PF('tabelaProduto').clearFilters(); " update=":frmProduto:tbProduto :msgGlobal"/>
 <p:commandButton value="Cancelar" onclick="PF('dlgprodAlterar').hide();" />
 </h:panelGrid>
 </h:form>
