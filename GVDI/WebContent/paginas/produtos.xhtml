@@ -70,13 +70,16 @@
 						value="#{MBProduto.produto.desc_prod}" required="true" requiredMessage="campo descrição obrigatório" />
 					<p:outputLabel value="Quantidade"/>
 					<h:inputText size="30" maxlength="45"
-						value="#{MBProduto.produto.quantidade}" required="true" requiredMessage="campo quantidade obrigatório"  />
+						value="#{MBProduto.produto.quantidade}" required="true" requiredMessage="campo quantidade obrigatório"  >
+						<f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
 					<p:outputLabel value="Preço de custo"/>
 					<h:inputText size="30" maxlength="8"
-						value="#{MBProduto.produto.preco_custo}" required="true" requiredMessage="campo preço de custo obrigatório"  />
+						value="#{MBProduto.produto.preco_custo}" required="true" requiredMessage="campo preço de custo obrigatório"  >
+						<f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
 					<p:outputLabel value="Preço de venda"/>
 					<h:inputText size="30" maxlength="8"
-						value="#{MBProduto.produto.preco_venda}" required="true" requiredMessage="campo preço de venda obrigatório"  />
+						value="#{MBProduto.produto.preco_venda}" required="true" requiredMessage="campo preço de venda obrigatório"  >
+						<f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Salvar" actionListener="#{MBProduto.novo}" 
@@ -114,9 +117,9 @@
 <h:panelGrid id="pnprodAlterar" columns="2">
 <h:outputText value="ID: "/><h:outputText value="#{MBProduto.produto.id_prod}"/>
 <h:outputText value="Descrição: "/><h:inputText value="#{MBProduto.produto.desc_prod}"/>
-<h:outputText value="Quantidade: "/><h:inputText value="#{MBProduto.produto.quantidade}"/>
-<h:outputText value="Custo R$"/><h:inputText value="#{MBProduto.produto.preco_custo}"/>
-<h:outputText value="Venda R$ "/><h:inputText value="#{MBProduto.produto.preco_venda}"/>
+<h:outputText value="Quantidade: "/><h:inputText value="#{MBProduto.produto.quantidade}"><f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
+<h:outputText value="Custo R$"/><h:inputText value="#{MBProduto.produto.preco_custo}"><f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
+<h:outputText value="Venda R$ "/><h:inputText value="#{MBProduto.produto.preco_venda}"><f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
 </h:panelGrid>	
 
 <h:panelGrid columns="2">
