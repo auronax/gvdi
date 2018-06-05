@@ -73,13 +73,12 @@
 						value="#{MBProduto.produto.quantidade}" required="true" requiredMessage="campo quantidade obrigatório"  >
 						<f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
 					<p:outputLabel value="Preço de custo"/>
-					<h:inputText size="30" maxlength="8"
-						value="#{MBProduto.produto.preco_custo}" required="true" requiredMessage="campo preço de custo obrigatório"  >
-						<f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
+						<p:inputMask id="preco_custo" size="30" maxlength="8"
+						value="#{MBProduto.produto.preco_custo}" required="true" requiredMessage="ampo preço de custo obrigatório" mask="99,99"/>
 					<p:outputLabel value="Preço de venda"/>
-					<h:inputText size="30" maxlength="8"
-						value="#{MBProduto.produto.preco_venda}" required="true" requiredMessage="campo preço de venda obrigatório"  >
-						<f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
+						<p:inputMask id="preco_venda" size="30" maxlength="8"
+						value="#{MBProduto.produto.preco_venda}" required="true" requiredMessage="campo preço de venda obrigatório" mask="99,99"/>
+						
 				</h:panelGrid>
 				<h:panelGrid columns="2">
 					<p:commandButton value="Salvar" actionListener="#{MBProduto.novo}" 
