@@ -4,7 +4,6 @@ import java.sql.*;
 import java.util.ArrayList;
 
 import br.com.gvdi.conexao.ConexaoBd;
-import br.com.gvdi.domain.Pessoa;
 import br.com.gvdi.domain.Produto;
 
 public class ProdutoDAO {
