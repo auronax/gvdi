@@ -7,36 +7,37 @@
 	xmlns:p="http://primefaces.org/ui"
 	template="/templates/modeloSistema.xhtml">
 
-	<ui:define name="login">
-		<ui:include src="/includes/menu.xhtml" />
-	</ui:define>
-
 	<ui:define name="conteudo">
 		
+<p:growl id="mensagem"/>
+
+
+
+
+<p:dialog header="Autenticação" closable="false" draggable="false"
+		resizable="false" global="true" visible="true">
 		<h:form>
-    <p:panel id="panel" header="Acesso">
- 
-        <p:messages id="msgs" />
- 
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel for="email" value="email:" />
-            <p:inputText id="email" value="#{LoginBean.email}" required="true" label="email">
-                <f:validateLength minimum="2" />
-            </p:inputText>
-            <p:message for="email" display="icon" />
- 
-            <p:outputLabel for="senha" value="senha:" />
-            <p:inputText id="senha" value="#{LoginBean.senha}" label="senha" required="true">
-                <f:validateLength minimum="2" />
-                <p:ajax update="msgsenha" event="keyup" />
-            </p:inputText>
-            <p:message for="senha" id="msgsenha" display="icon" />
- 
-        </h:panelGrid>
- 
-        <p:commandButton value="Entrar" update="panel" actionListener="#{LoginBean.save}" icon="ui-icon-check" />
-    </p:panel>
-</h:form>
+			<h:panelGrid columns="2">
+				<p:outputLabel for="cpf" value="CPF:" />
+				<p:inputMask id="cpf" mask="999.999.999-99" size="20"
+					required="true" requiredMessage="O campo CPF é obrigatório"
+					value="#{autenticacaoBean.usuario.pessoa.cpf}"
+					 />
+
+				<p:outputLabel for="senha" value="Senha:" />
+				<p:password id="senha" maxlength="8" size="20" required="true"
+					requiredMessage="O campo Senha é obrigatório" 
+					value="#{autenticacaoBean.usuario.senha}"
+					/>
+			</h:panelGrid>
+
+			<h:panelGrid columns="1">
+				<p:commandButton value="Entrar"
+				actionListener="#{autenticacaoBean.autenticar}"
+				 />
+			</h:panelGrid>
+		</h:form>
+	</p:dialog>
 
 	</ui:define>
 
