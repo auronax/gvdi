@@ -6,8 +6,8 @@ import java.sql.SQLException;
 
 public class ConexaoBd {
 	private static final String USUARIO = "root";
-	private static final String SENHA = "123456";
-	private static final String URL = "jdbc:mysql://localhost:3306/gvdi";
+	private static final String SENHA = "";
+	private static final String URL = "jdbc:mysql://localhost:3307/gvdi";
 	
 	public static Connection conectar() throws SQLException {
 		
