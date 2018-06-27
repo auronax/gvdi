@@ -12,30 +12,15 @@
 	</ui:define>
 
 	<ui:define name="conteudo">
-		
-		<h:form>
-    <p:panel id="panel" header="Acesso">
- 
-        <p:messages id="msgs" />
- 
-        <h:panelGrid columns="3" cellpadding="5">
-            <p:outputLabel for="email" value="email:" />
-            <p:inputText id="email" value="#{LoginBean.email}" required="true" label="email">
-                <f:validateLength minimum="2" />
-            </p:inputText>
-            <p:message for="email" display="icon" />
- 
-            <p:outputLabel for="senha" value="senha:" />
-            <p:inputText id="senha" value="#{LoginBean.senha}" label="senha" required="true">
-                <f:validateLength minimum="2" />
-                <p:ajax update="msgsenha" event="keyup" />
-            </p:inputText>
-            <p:message for="senha" id="msgsenha" display="icon" />
- 
-        </h:panelGrid>
- 
-        <p:commandButton value="Entrar" update="panel" actionListener="#{LoginBean.save}" icon="ui-icon-check" />
-    </p:panel>
+<h:form id="myform">
+  
+    <h:messages globalOnly="true" style="color:red;margin:8px;" />
+  
+    <h:outputText value="Username: "/>
+    <h:inputText label="Username" value="#{MBLogin.username}" /><br/><br/>
+    <h:outputText value="Password: "/>
+    <h:inputSecret value="#{MBLogin.password}" /><br/><br/>
+    <h:commandButton value="login" action="#{MBLogin.login}"/>
 </h:form>
 
 	</ui:define>

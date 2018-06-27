@@ -48,8 +48,8 @@ public class PessoaDAO {
 		PreparedStatement comando = conexao.prepareStatement(sql.toString());
 
 		comando.setString(1, p.getNome());
-		
-		comando.setLong(2, p.getId_pessoa());
+		comando.setString(2, p.getEmail());
+		comando.setLong(3, p.getId_pessoa());
 		
 		comando.execute();
 	}

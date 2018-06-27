@@ -116,13 +116,13 @@
 <h:panelGrid id="pnprodAlterar" columns="2">
 <h:outputText value="ID: "/><h:outputText value="#{MBProduto.produto.id_prod}"/>
 <h:outputText value="Descrição: "/><h:inputText value="#{MBProduto.produto.desc_prod}"/>
-<h:outputText value="Quantidade: "/><h:inputText value="#{MBProduto.produto.quantidade}"><f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
-<h:outputText value="Custo R$"/><h:inputText value="#{MBProduto.produto.preco_custo}"><f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
-<h:outputText value="Venda R$ "/><h:inputText value="#{MBProduto.produto.preco_venda}"><f:convertNumber integerOnly="true" minIntegerDigits="2"  /></h:inputText>
+<h:outputText value="Quantidade: "/><h:inputText value="#{MBProduto.produto.quantidade}"/>
+<h:outputText value="Custo R$"/><h:inputText value="#{MBProduto.produto.preco_custo}"/>
+<h:outputText value="Venda R$ "/><h:inputText value="#{MBProduto.produto.preco_venda}"/>
 </h:panelGrid>	
 
 <h:panelGrid columns="2">
-<p:commandButton value="Alterar" oncomplete="PF('dlgprodAlterar').hide(); PF('tabelaProduto').clearFilters(); " update=":frmProduto:tbProduto :msgGlobal"/>
+<p:commandButton value="Alterar" actionListener="#{MBProduto.alterar}" oncomplete="PF('dlgprodAlterar').hide(); PF('tabelaProduto').clearFilters(); " update=":frmProduto:tbProduto :msgGlobal"/>
 <p:commandButton value="Cancelar" onclick="PF('dlgprodAlterar').hide();" />
 </h:panelGrid>
 </h:form>
