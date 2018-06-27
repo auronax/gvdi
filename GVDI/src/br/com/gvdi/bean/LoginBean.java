@@ -67,7 +67,7 @@ public class LoginBean {
 	     	FacesContext context = FacesContext.getCurrentInstance();
 	     	context.getExternalContext().invalidateSession();
 	         try {
-	 context.getExternalContext().redirect("Login.xhtml");
+	 context.getExternalContext().redirect("login.xhtml");
 	 } catch (IOException e) {
 	 e.printStackTrace();
 	 }

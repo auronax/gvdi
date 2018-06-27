@@ -5,24 +5,25 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui"
-	template="/templates/modeloSistema.xhtml">
+	template="/templates/modeloSistema2.xhtml">
 
 	<ui:define name="login">
 		<ui:include src="/includes/menu.xhtml" />
 	</ui:define>
 
 	<ui:define name="conteudo">
-<h:form id="myform">
-  
-    <h:messages globalOnly="true" style="color:red;margin:8px;" />
-  
-    <h:outputText value="Username: "/>
+	
+<div class="center-form">
+
+<h:form id="myform" >
+    <h:messages globalOnly="true" style="color:red;margin-left:-20%;" />
+    <h:outputText value="Usuário: "/>
     <h:inputText label="Username" value="#{MBLogin.username}" /><br/><br/>
-    <h:outputText value="Password: "/>
+    <h:outputText value="Senha: "/>
     <h:inputSecret value="#{MBLogin.password}" /><br/><br/>
     <h:commandButton value="login" action="#{MBLogin.login}"/>
 </h:form>
-
+</div>
 	</ui:define>
 
 </ui:composition>
